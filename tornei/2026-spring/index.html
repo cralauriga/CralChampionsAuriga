@@ -10542,7 +10542,16 @@ function ensureFantaDataInBackground(fresh){
     return Promise.resolve(true);
   }
 
-  if(_fantaEnsureDataPromise && !fresh) return _fantaEnsureDataPromise;
+  // Riusa sempre l'eventuale controllo già in corso, anche quando il secondo
+  // chiamante richiede fresh=true: evita due fetch contemporanee dello stesso JSON.
+  if(_fantaEnsureDataPromise) return _fantaEnsureDataPromise;
+
+  // Dopo un tentativo fallito non riprovare durante la stessa sessione, salvo
+  // un aggiornamento esplicito con fresh=true.
+  if(state.fantaPrecomputedAttempted && !fresh){
+    state.fantaLoading=false;
+    return Promise.resolve(false);
+  }
 
   state.fantaLoading=true;
   _fantaEnsureDataPromise=(async()=>{
