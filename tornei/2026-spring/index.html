@@ -464,7 +464,7 @@
     .wrapped-slide::after{content:'✦';position:absolute;right:28px;top:70px;color:var(--accent);font-size:42px;text-shadow:0 0 20px rgba(var(--accent-rgb),.70),0 0 44px rgba(var(--accent2-rgb),.45);animation:wrappedStarPulse 1.7s ease-in-out infinite alternate;pointer-events:none}
     .wrapped-slide > *{position:relative;z-index:2}
     .wrapped-slide .ws-eyebrow{display:inline-flex;align-items:center;justify-content:center;padding:8px 13px;margin-bottom:18px;border-radius:999px;color:#071d3a;background:linear-gradient(120deg,var(--accent),#fff2bf);box-shadow:0 10px 28px rgba(var(--accent-rgb),.34);letter-spacing:.13em}
-    .wrapped-slide .ws-photo,.wrapped-slide .ws-logo{width:138px;height:138px;border-radius:32px;margin-bottom:20px;border:3px solid rgba(255,255,255,.82);box-shadow:0 22px 46px rgba(0,0,0,.46),0 0 0 8px rgba(var(--accent-rgb),.22),0 0 46px rgba(var(--accent-rgb),.35);transform:rotate(-2deg)}
+    .wrapped-slide .ws-photo,.wrapped-slide .ws-logo{width:112px;height:112px;border-radius:28px;margin-bottom:20px;border:3px solid rgba(255,255,255,.82);box-shadow:0 22px 46px rgba(0,0,0,.46),0 0 0 8px rgba(var(--accent-rgb),.22),0 0 46px rgba(var(--accent-rgb),.35);transform:rotate(-2deg)}
     .wrapped-slide .ws-logo{object-fit:contain;padding:10px;background:rgba(255,255,255,.92)}
     /* Immagini Wrapped: riquadro realmente quadrato, contenuto più grande e
        nessuna piastra bianca dietro. Loghi e foto restano interamente
@@ -503,7 +503,7 @@
     @keyframes wrappedShimmer{0%,100%{transform:translateX(-5%) rotate(8deg)}50%{transform:translateX(5%) rotate(8deg)}}
     @keyframes wrappedStarPulse{from{transform:scale(.92) rotate(-8deg);opacity:.65}to{transform:scale(1.12) rotate(8deg);opacity:1}}
     @keyframes wrappedOrbFloat{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(22px,-28px,0) scale(1.12)}}
-    @media(max-width:560px){.wrapped-slide{inset:12px;width:calc(100vw - 24px);min-height:calc(100svh - 128px);border-radius:28px;padding:20px}.wrapped-slide .ws-photo,.wrapped-slide .ws-logo{width:112px;height:112px;border-radius:26px}.wrapped-slide .ws-detail{font-size:14.5px}}
+    @media(max-width:560px){.wrapped-slide{inset:12px;width:calc(100vw - 24px);min-height:calc(100svh - 128px);border-radius:28px;padding:20px}.wrapped-slide .ws-photo,.wrapped-slide .ws-logo{width:92px;height:92px;border-radius:22px}.wrapped-slide .ws-detail{font-size:14.5px}}
     @media(prefers-reduced-motion:reduce){.wrapped-overlay::before,.wrapped-overlay::after,.wrapped-slide::before,.wrapped-slide::after,.wrapped-slide.is-current{animation:none}.wrapped-slide{transform:none}}
 
 
@@ -529,27 +529,27 @@
     /* Dimensioni dedicate all'esportazione: soggetti piu' grandi e contenuti
        centrati nella zona sicura della Story, senza alterare il Wrapped a video. */
     .wrapped-export-frame .wrapped-cover{padding-top:26px!important}
-    .wrapped-export-frame .wrapped-cover .ws-cral-logo{width:154px;height:154px;margin-bottom:10px;border-radius:34px}
+    .wrapped-export-frame .wrapped-cover .ws-cral-logo{width:136px;height:136px;margin-bottom:10px;border-radius:30px}
     .wrapped-export-frame .wrapped-cover .ws-name{font-size:42px!important}
     .wrapped-export-frame .wrapped-cover .ws-big-word{font-size:78px;margin:8px 0 14px}
-    .wrapped-export-frame .wrapped-scorer .ws-photo{width:178px;height:178px;border-radius:38px;margin-bottom:17px}
+    .wrapped-export-frame .wrapped-scorer .ws-photo{width:146px;height:146px;border-radius:32px;margin-bottom:17px}
     .wrapped-export-frame .wrapped-scorer .ws-name{font-size:42px}
     .wrapped-export-frame .wrapped-average .ws-photo,
     .wrapped-export-frame .wrapped-mvp .ws-photo,
-    .wrapped-export-frame .wrapped-keeper .ws-photo{width:164px;height:164px;border-radius:36px;margin-bottom:16px}
+    .wrapped-export-frame .wrapped-keeper .ws-photo{width:134px;height:134px;border-radius:30px;margin-bottom:16px}
     /* Safari può lasciare opacity:0 sulle immagini già presenti in cache se il
        relativo onload non viene ridispatchato nel frame off-screen. Nell'export
        la decodifica viene comunque attesa via JS: qui rendiamo esplicitamente
        visibili foto e loghi validi, senza dipendere dall'animazione img-fade. */
     .wrapped-export-frame img.ws-logo,
     .wrapped-export-frame img.ws-photo{opacity:1!important;visibility:visible!important}
-    .wrapped-export-frame .wrapped-champion .ws-logo{width:184px;height:184px;max-width:74%;border-radius:40px;margin:0 auto 16px;padding:14px;object-fit:contain!important;background:rgba(255,255,255,.96)}
+    .wrapped-export-frame .wrapped-champion .ws-logo{width:160px;height:160px;max-width:66%;border-radius:36px;margin:0 auto 16px;padding:14px;object-fit:contain!important;background:rgba(255,255,255,.96)}
     .wrapped-export-frame .wrapped-champion .ws-name{font-size:43px;max-width:330px}
     .wrapped-export-frame .wrapped-champion .ws-big{font-size:104px;margin-top:2px}
     .wrapped-export-frame .wrapped-crazy{padding-left:18px!important;padding-right:18px!important}
     .wrapped-export-frame .wrapped-crazy .wrapped-crazy-match{grid-template-columns:minmax(0,1fr) 100px minmax(0,1fr);max-width:100%;width:100%;gap:8px;margin:5px auto 13px}
     .wrapped-export-frame .wrapped-crazy .wrapped-crazy-team{width:100%;min-width:0}
-    .wrapped-export-frame .wrapped-crazy .wrapped-crazy-team .ws-logo{width:116px;height:116px;max-width:100%;border-radius:26px;padding:8px;object-fit:contain!important;background:rgba(255,255,255,.96);margin:0 auto}
+    .wrapped-export-frame .wrapped-crazy .wrapped-crazy-team .ws-logo{width:98px;height:98px;max-width:100%;border-radius:22px;padding:8px;object-fit:contain!important;background:rgba(255,255,255,.96);margin:0 auto}
     .wrapped-export-frame .wrapped-crazy .wrapped-crazy-score{width:100px;min-width:100px;padding:10px 6px;font-size:42px;border-radius:21px;letter-spacing:-.045em}
     .wrapped-export-frame .wrapped-crazy .wrapped-crazy-team-name{width:100%;max-width:122px;font-size:13.5px;line-height:1.08}
     .wrapped-export-frame .wrapped-crazy .ws-big{font-size:90px;margin:2px 0 6px}
@@ -5322,9 +5322,10 @@ function wrappedDrawVideoShimmer(ctx,w,h,timeMs,accent){
   ctx.fillRect(-170,-h,340,h*2);
   ctx.restore();
 }
+const WRAPPED_VIDEO_PER_SLIDE_MS=2300; // unica fonte di verità: usata sia per generare il video sia per disegnare i frame
 function wrappedDrawVideoFrame(ctx,renderedSlides,timeMs){
   const W=ctx.canvas.width,H=ctx.canvas.height;
-  const perSlideMs=2800;
+  const perSlideMs=WRAPPED_VIDEO_PER_SLIDE_MS;
   const transitionMs=760;
   const count=renderedSlides.length;
   if(!count) return;
@@ -5530,7 +5531,7 @@ async function wrappedPrepareVideoInBackground(signature){
     );
     wrappedThrowIfAborted(signal);
 
-    const W=1080,H=1920,FPS=30,PER_SLIDE_MS=2300;
+    const W=1080,H=1920,FPS=30,PER_SLIDE_MS=WRAPPED_VIDEO_PER_SLIDE_MS;
     const canvas=document.createElement('canvas');
     canvas.width=W; canvas.height=H;
     const ctx=canvas.getContext('2d',{alpha:false,desynchronized:false});
