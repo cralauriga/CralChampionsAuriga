@@ -1440,7 +1440,7 @@
     .entity-nav-btn:hover{transform:translateY(-1px);border-color:rgba(15,90,168,.36);background:color-mix(in srgb,var(--soft) 70%,var(--blue) 8%)}
     .entity-nav-btn:active{transform:scale(.96)}
     .entity-nav-btn.icon-only{width:40px;padding:0;font-size:18px}
-    .entity-content{position:relative;flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scroll-behavior:smooth;background:linear-gradient(180deg,color-mix(in srgb,var(--soft) 55%,transparent),var(--panel) 280px)}
+    .entity-content{position:relative;flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scroll-behavior:smooth;background:linear-gradient(180deg,color-mix(in srgb,var(--soft) 55%,transparent),var(--panel) 280px);background-attachment:local}
     .entity-view{min-height:100%;padding-bottom:22px;will-change:transform,opacity}
     .entity-hero{position:relative;overflow:hidden;padding:28px 26px 24px;background:linear-gradient(135deg,var(--dark),var(--blue));color:#fff}
     .entity-hero::after{content:'';position:absolute;right:-90px;bottom:-140px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(245,185,66,.28),rgba(255,255,255,.08) 38%,transparent 68%);pointer-events:none}
@@ -9693,13 +9693,6 @@ function renderPagellone(){
     selectedPairs=state.selectedPagellonePartita ? pairs.filter(p=>String(p.key)===String(state.selectedPagellonePartita)) : pairs;
 
     html = `
-      <div class="pg-banner">
-        <div class="pg-banner-content">
-          <span class="pg-banner-flag">📣 🟥</span>
-          <span class="pg-banner-text">Rubrica pagellone ignorante<b>${bannerTitle}</b></span>
-          <span class="pg-banner-flag">🟥 📣</span>
-        </div>
-      </div>
       <div class="pg-selectors">${selectors}</div>`;
 
     if(!currentFile){
