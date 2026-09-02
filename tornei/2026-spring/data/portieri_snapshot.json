@@ -1,12 +1,13 @@
 {
-  "generatoIl": "2026-07-28T09:11:33.320Z",
+  "generatoIl": "2026-09-02T15:29:06.742Z",
   "giornata": 10,
   "totalePunti": 18,
   "perPortiere": {
-    "Iacobellis PT": 7,
+    "Iacobellis PT": 6,
     "Colangiuli PT": 5,
     "Mincuzzi PT": 3,
     "Bruno PT": 2,
+    "PT Iacobellis": 1,
     "Schiavone PT": 1
   },
   "portieriEsterni": {
