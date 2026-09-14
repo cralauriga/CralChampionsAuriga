@@ -117,6 +117,9 @@
     h2{margin:0 0 14px;color:var(--blue);font-size:26px;font-family:'Oswald',Arial,Helvetica,sans-serif}
     .upper{text-transform:uppercase}
     .hint{color:var(--muted);font-size:14px;line-height:1.5}
+    .fanta-roster-creator-cta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+    .fanta-roster-creator-link{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:13px;padding:10px 13px;background:linear-gradient(135deg,#f5b942,#ffd76c);color:#302100;text-decoration:none;font-weight:900;font-size:13px;box-shadow:0 7px 18px rgba(245,185,66,.18)}
+    .fanta-roster-creator-note{color:var(--muted);font-size:12px}
     /* ── Ricerca ── */
     .search{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:14px;margin:0 0 14px;font-size:15px;background:var(--panel);color:var(--ink)}
     /* ── Tabelle ── */
@@ -3015,6 +3018,11 @@ function updateTitle(){
 function applyConfig(){
   const f=Object.keys(state.rows).find(x=>norm(x)==='configcsv');
   if(!f) return;
+  // Queste chiavi possono essere volutamente svuotate dall'Admin: eliminiamo
+  // l'eventuale valore della configurazione precedente prima di rileggere il CSV.
+  delete state.config.fantacalciocreazionerosaenabled;
+  delete state.config.fantacalciocreazionerosaopenfrom;
+  delete state.config.fantacalciocreazionerosacloseat;
   for(const r of rowsToObjects(state.rows[f])){
     const k=norm(col(r,['chiave','key','nome']));
     const v=col(r,['valore','value','testo']);
@@ -13052,6 +13060,16 @@ function renderFantacalcio(){
   const crown=document.createElement('span'); crown.className='gold-crown'; crown.textContent='♛';
   title.appendChild(crown); title.appendChild(document.createTextNode(' Fantacalcio'));
   card.appendChild(title);
+
+  if(fantaRosterCreatorAvailable()){
+    const creatorCta=document.createElement('div'); creatorCta.className='fanta-roster-creator-cta';
+    const creatorLink=document.createElement('a'); creatorLink.className='fanta-roster-creator-link'; creatorLink.href='crea-rosa.html'; creatorLink.textContent='⚽ Crea la tua rosa';
+    const creatorNote=document.createElement('span'); creatorNote.className='fanta-roster-creator-note';
+    const deadline=fantaRosterCreatorDeadlineLabel();
+    creatorNote.textContent="Genera il CSV complessivo validato sul listone ufficiale e invialo all'admin."+(deadline?` Disponibile fino al ${deadline}.`:'');
+    creatorCta.appendChild(creatorLink); creatorCta.appendChild(creatorNote); card.appendChild(creatorCta);
+  }
+
   const intro=document.createElement('p'); intro.className='hint fanta-claim';
   intro.textContent='Scegli la giornata e il punteggio si aggiorna con risultati e statistiche del torneo.';
   card.appendChild(intro);
@@ -13240,6 +13258,36 @@ function fantaPathRowsV22(rows){
 function fantaManifestCsvPaths(){
   const rows=state.rows['manifest.csv']||[];
   return [...new Set(fantaPathRowsV22(rows).map(normalizeFantaCsvPath).filter(Boolean))];
+}
+function fantaConfigBool(value,fallback=true){
+  const v=norm(value);
+  if(!v) return fallback;
+  if(['false','0','no','n','off','disabilitato'].includes(v)) return false;
+  if(['true','1','si','s','yes','on','abilitato'].includes(v)) return true;
+  return fallback;
+}
+function fantaRosterCreatorWindowStatus(now=Date.now()){
+  const enabled=fantaConfigBool(state.config.fantacalciocreazionerosaenabled,true);
+  if(!enabled) return {open:false,reason:'disabled',openAt:null,closeAt:null};
+  const openRaw=String(state.config.fantacalciocreazionerosaopenfrom||'').trim();
+  const closeRaw=String(state.config.fantacalciocreazionerosacloseat||'').trim();
+  const openAt=Date.parse(openRaw);
+  const closeAt=Date.parse(closeRaw);
+  if(Number.isFinite(openAt)&&now<openAt) return {open:false,reason:'not-open-yet',openAt,closeAt:Number.isFinite(closeAt)?closeAt:null};
+  if(Number.isFinite(closeAt)&&now>=closeAt) return {open:false,reason:'closed',openAt:Number.isFinite(openAt)?openAt:null,closeAt};
+  return {open:true,reason:'open',openAt:Number.isFinite(openAt)?openAt:null,closeAt:Number.isFinite(closeAt)?closeAt:null};
+}
+function fantaRosterCreatorAvailable(){
+  // Due condizioni indipendenti: Fantacalcio realmente configurato nel manifest
+  // e finestra di iscrizione abilitata/aperta dall'Admin. Se le nuove chiavi non
+  // esistono (tornei legacy), enabled resta true per non introdurre regressioni.
+  if(!fantaManifestCsvPaths().some(path=>fileKind(path)==='fanta_listone')) return false;
+  return fantaRosterCreatorWindowStatus().open;
+}
+function fantaRosterCreatorDeadlineLabel(){
+  const status=fantaRosterCreatorWindowStatus();
+  if(!status.open||!Number.isFinite(status.closeAt)) return '';
+  try{return new Date(status.closeAt).toLocaleString('it-IT',{dateStyle:'medium',timeStyle:'short'});}catch{return '';}
 }
 async function fantaDedicatedCsvPathsV22(fresh=false,signal){
   try{
