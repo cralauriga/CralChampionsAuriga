@@ -70,11 +70,15 @@
     .current-year{font-family:'Oswald',Arial,Helvetica,sans-serif;font-size:clamp(58px,10vw,104px);font-weight:700;line-height:.9;letter-spacing:.01em;color:var(--gold);text-shadow:0 10px 30px rgba(0,0,0,.22)}
     .current-season{font-family:'Oswald',Arial,Helvetica,sans-serif;font-size:18px;font-weight:600;color:rgba(255,255,255,.66);text-transform:uppercase;letter-spacing:.08em}
 
-    .hall-teaser{position:relative;overflow:hidden;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center;padding:20px 22px;border:1px solid rgba(245,185,66,.45);border-radius:22px;background:linear-gradient(135deg,color-mix(in srgb,var(--panel) 92%,var(--gold) 8%),var(--panel));box-shadow:0 8px 22px var(--shadow)}
-    .hall-teaser::after{content:'';position:absolute;right:-70px;top:-100px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(245,185,66,.20),transparent 68%);pointer-events:none}
-    .hall-icon{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:19px;background:linear-gradient(145deg,var(--gold),#ffe6a3);color:#071d3a;font-size:32px;box-shadow:0 10px 24px rgba(245,185,66,.24)}
-    .hall-copy{position:relative;z-index:1;min-width:0}.hall-copy .eyebrow{margin:0 0 5px;background:var(--blue-soft);border-color:rgba(15,90,168,.20);color:var(--blue)}.hall-copy h2{margin:0;font-family:'Oswald',Arial,Helvetica,sans-serif;font-size:clamp(24px,3vw,32px);color:var(--ink);text-transform:uppercase}.hall-copy p{margin:5px 0 0;color:var(--muted);font-size:13px;line-height:1.45}
-    .hall-open-btn{position:relative;z-index:1;white-space:nowrap;margin:0}
+    .hall-teaser{position:relative;overflow:hidden;display:grid;grid-template-columns:94px minmax(0,1fr) auto;gap:22px;align-items:center;padding:24px 26px;border:1px solid rgba(245,185,66,.45);border-radius:24px;background:linear-gradient(135deg,color-mix(in srgb,var(--panel) 89%,var(--gold) 11%),var(--panel) 62%);box-shadow:0 10px 28px var(--shadow);isolation:isolate}
+    .hall-teaser::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 8% 18%,rgba(255,220,126,.14),transparent 23%),radial-gradient(circle at 78% 8%,rgba(49,114,214,.10),transparent 28%);pointer-events:none;z-index:0}
+    .hall-teaser::after{content:'';position:absolute;right:-70px;top:-100px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(245,185,66,.22),transparent 68%);pointer-events:none;z-index:0}
+    .hall-icon{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:88px;height:88px;border-radius:28px;background:radial-gradient(circle at 34% 24%,#1d4c8f 0,#0b2851 42%,#06152b 100%);border:1px solid rgba(255,214,111,.72);box-shadow:0 16px 38px rgba(4,15,34,.44),0 0 0 1px rgba(255,255,255,.04) inset,0 0 32px rgba(62,132,246,.16) inset;isolation:isolate}
+    .hall-icon::before{content:'';position:absolute;inset:8px;border-radius:21px;background:conic-gradient(from 18deg,rgba(255,221,132,.18),transparent 16%,transparent 34%,rgba(87,156,255,.16) 48%,transparent 63%,transparent 84%,rgba(255,221,132,.18));filter:blur(.2px);z-index:-1}
+    .hall-icon svg{width:68px;height:68px;display:block;filter:drop-shadow(0 8px 14px rgba(0,0,0,.36))}.hall-elite-halo{fill:none;stroke:rgba(255,224,148,.28);stroke-width:1.1}.hall-elite-orbit{fill:none;stroke:rgba(112,171,255,.38);stroke-width:1;stroke-dasharray:1.6 4.2}.hall-elite-spark{fill:url(#hallEliteGold)}.hall-elite-cup{fill:url(#hallEliteGold);stroke:#ffe3a0;stroke-width:.55;stroke-linejoin:round}.hall-elite-cut{fill:#0a2348}.hall-elite-line{fill:none;stroke:url(#hallEliteGold);stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+    .hall-copy{position:relative;z-index:1;min-width:0}.hall-copy .eyebrow{margin:0 0 7px;background:var(--blue-soft);border-color:rgba(15,90,168,.20);color:var(--blue)}.hall-copy h2{margin:0;font-family:'Oswald',Arial,Helvetica,sans-serif;font-size:clamp(30px,4vw,42px);line-height:1;color:var(--ink);text-transform:uppercase}.hall-copy p{margin:8px 0 0;max-width:690px;color:var(--muted);font-size:14.5px;line-height:1.5}
+    .hall-feature-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}.hall-feature{display:inline-flex;align-items:center;gap:5px;padding:6px 9px;border:1px solid color-mix(in srgb,var(--line) 82%,var(--gold) 18%);border-radius:999px;background:color-mix(in srgb,var(--panel) 90%,var(--gold) 10%);color:var(--ink);font-size:10.5px;font-weight:850;white-space:nowrap}.hall-feature b{color:var(--blue);font-weight:950}
+    .hall-open-btn{position:relative;z-index:1;white-space:nowrap;margin:0;min-width:190px}
     .hall-panel{margin-top:12px;padding:18px;border:1px solid var(--line);border-radius:22px;background:var(--panel);box-shadow:0 8px 22px var(--shadow)}
     .hall-panel[hidden]{display:none}.hall-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:16px}.hall-panel-head h2{margin:0;font-family:'Oswald',Arial,Helvetica,sans-serif;font-size:clamp(28px,4vw,40px);text-transform:uppercase;color:var(--blue)}.hall-panel-head p{margin:4px 0 0;color:var(--muted);font-size:13px}.hall-close{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:13px;background:var(--soft);color:var(--ink);font-size:20px;cursor:pointer}
     .hall-record-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:18px}.hall-record{min-width:0;padding:14px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,var(--soft),var(--panel))}.hall-record-icon{font-size:25px}.hall-record small{display:block;margin-top:7px;color:var(--muted);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.055em}.hall-record b{display:block;margin-top:3px;color:var(--ink);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hall-record span{display:block;margin-top:3px;color:var(--blue);font-family:'Oswald',Arial,Helvetica,sans-serif;font-size:20px;font-weight:700}
@@ -125,7 +129,7 @@
       .current-year{font-size:48px}
       .current-season{font-size:14px;align-self:flex-end;margin-bottom:4px}
       .primary-btn{width:100%;margin-top:15px;padding:12px 16px}
-      .hall-teaser{grid-template-columns:auto minmax(0,1fr);padding:16px;gap:12px}.hall-icon{width:52px;height:52px;border-radius:16px;font-size:27px}.hall-open-btn{grid-column:1/-1;width:100%}.hall-record-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hall-panel{padding:14px}.hall-history{grid-template-columns:1fr}
+      .hall-teaser{grid-template-columns:64px minmax(0,1fr);column-gap:12px;row-gap:8px;padding:14px;border-radius:20px;text-align:left}.hall-icon{grid-column:1;grid-row:1/3;width:64px;height:64px;border-radius:20px;margin:0;align-self:center}.hall-icon::before{inset:7px;border-radius:15px}.hall-icon svg{width:50px;height:50px}.hall-copy{display:contents}.hall-copy .eyebrow{grid-column:2;grid-row:1;justify-self:start;align-self:end;margin:0;padding:4px 8px;font-size:9.5px}.hall-copy h2{grid-column:2;grid-row:2;align-self:start;font-size:29px;line-height:1;text-align:left}.hall-copy p{grid-column:1/-1;grid-row:3;max-width:none;margin:2px 0 0;font-size:12.5px;line-height:1.38;text-align:center}.hall-feature-list{grid-column:1/-1;grid-row:4;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:3px}.hall-feature{justify-content:center;min-width:0;min-height:32px;padding:5px 6px;font-size:9.5px}.hall-open-btn{grid-column:1/-1;grid-row:5;width:100%;min-width:0;min-height:48px;margin-top:2px;padding:10px 14px}.hall-record-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hall-panel{padding:14px}.hall-history{grid-template-columns:1fr}
       .archive-grid{grid-template-columns:1fr}
       .section-head{align-items:flex-start}
       .archive-actions{justify-content:stretch}
@@ -194,11 +198,27 @@
 
       <section aria-labelledby="hallTeaserTitle" id="hallOfFameSection">
         <div class="hall-teaser">
-          <div class="hall-icon" aria-hidden="true">🏆</div>
+          <div class="hall-icon" aria-hidden="true"><svg class="hall-elite-mark" viewBox="0 0 72 72" focusable="false">
+              <defs>
+                <linearGradient id="hallEliteGold" x1="13" y1="8" x2="58" y2="63" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff2bd"/><stop offset=".28" stop-color="#ffd66b"/><stop offset=".62" stop-color="#e9a72d"/><stop offset="1" stop-color="#fff0ad"/></linearGradient>
+              </defs>
+              <circle class="hall-elite-halo" cx="36" cy="36" r="28.5"/>
+              <path class="hall-elite-orbit" d="M12.5 40.5C16.2 18.7 34.8 7.8 54.9 17.2M17.1 54.7C37.2 64.1 55.8 53.2 59.5 31.4"/>
+              <path class="hall-elite-spark" d="m36 5.8 1.55 3.55 3.55 1.55-3.55 1.55L36 16l-1.55-3.55-3.55-1.55 3.55-1.55L36 5.8Zm21.9 12.5 1.1 2.5 2.5 1.1-2.5 1.1-1.1 2.5-1.1-2.5-2.5-1.1 2.5-1.1 1.1-2.5ZM14.1 18.3l1.1 2.5 2.5 1.1-2.5 1.1-1.1 2.5-1.1-2.5-2.5-1.1 2.5-1.1 1.1-2.5Zm43.8 28.1.9 2.05 2.05.9-2.05.9-.9 2.05-.9-2.05-2.05-.9 2.05-.9.9-2.05ZM14.1 46.4l.9 2.05 2.05.9-2.05.9-.9 2.05-.9-2.05-2.05-.9 2.05-.9.9-2.05Z"/>
+              <path class="hall-elite-cup" d="M24.2 20.2h23.6v8.1c0 8.65-4.7 14.15-9.75 16.25v5.15h6.45v4H27.5v-4h6.45v-5.15c-5.05-2.1-9.75-7.6-9.75-16.25v-8.1Z"/>
+              <path class="hall-elite-cut" d="M28.5 24.4h15v4.15c0 6.15-2.95 10.25-7.5 12.15-4.55-1.9-7.5-6-7.5-12.15V24.4Z"/>
+              <path class="hall-elite-line" d="M24.4 24.1h-5.2v3.1c0 5.25 3.25 8.45 7.6 9.45M47.6 24.1h5.2v3.1c0 5.25-3.25 8.45-7.6 9.45M31.1 58.2h9.8"/>
+            </svg></div>
           <div class="hall-copy">
             <div class="eyebrow">Leggende CRAL Champions</div>
             <h2 id="hallTeaserTitle">Hall of Fame</h2>
-            <p>Albo d'oro, bomber all-time, MVP e portieri che hanno lasciato il segno nelle edizioni concluse.</p>
+            <p>Albo d'oro, record e protagonisti che hanno scritto la storia delle edizioni concluse.</p>
+            <div class="hall-feature-list" aria-label="Contenuti Hall of Fame">
+              <span class="hall-feature"><b>🏆</b> Albo d'oro</span>
+              <span class="hall-feature"><b>⚽</b> Bomber all-time</span>
+              <span class="hall-feature"><b>⭐</b> MVP</span>
+              <span class="hall-feature"><b>🧤</b> Portieri</span>
+            </div>
           </div>
           <button class="primary-btn hall-open-btn" id="hallOpenBtn" type="button" aria-expanded="false" aria-controls="hallPanel">Entra nella Hall of Fame ›</button>
         </div>
